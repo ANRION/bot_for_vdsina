@@ -32,6 +32,7 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
     def text_handler(message: telebot.types.Message):
         keyboard = types.InlineKeyboardMarkup()
         callback_button = types.InlineKeyboardButton(text="Нажми меня", callback_data="test")
+        callback_button = types.InlineKeyboardButton(text="Не нажимай меня", callback_data="notest")
         keyboard.add(callback_button)
         bot.send_message(message.chat.id, "Я – сообщение из обычного режима", reply_markup=keyboard)
              
@@ -44,10 +45,8 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
         if call.message:
             if call.data == "test":
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Пыщь")
-        # Если сообщение из инлайн-режима
-        elif call.inline_message_id:
-            if call.data == "test":
-                bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")
+            if call.data == "notest":
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="БАХ!!!")
     
     
     
