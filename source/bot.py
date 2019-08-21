@@ -36,11 +36,23 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
         bot.send_message(message.chat.id, "Я – сообщение из обычного режима", reply_markup=keyboard)
              
        # bot.send_message(message.chat.id, 'Твоя задача готова?',reply_markup=keyboard1)
-       
-        
-          
         logger.info(f"It's text handler. Message from {message.from_user.id}")
-
+        
+    @bot.callback_query_handler(func=lambda call: True)
+        def callback_inline(call):
+        # Если сообщение из чата с ботом
+        if call.message:
+            if call.data == "test":
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Пыщь")
+        # Если сообщение из инлайн-режима
+        elif call.inline_message_id:
+            if call.data == "test":
+                bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")
+    
+    
+    
+    
+    
     if use_logging:
         telebot.logger.setLevel(logging.getLevelName(level_name))
 
