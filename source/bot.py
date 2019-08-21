@@ -32,8 +32,9 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
     def text_handler(message: telebot.types.Message):
         keyboard = types.InlineKeyboardMarkup()
         callback_button = types.InlineKeyboardButton(text="Нажми меня", callback_data="test")
-        callback_button = types.InlineKeyboardButton(text="Не нажимай меня", callback_data="notest")
+        callback_button2 = types.InlineKeyboardButton(text="Не нажимай меня", callback_data="notest")
         keyboard.add(callback_button)
+        keyboard.add(callback_button2)
         bot.send_message(message.chat.id, "Я – сообщение из обычного режима", reply_markup=keyboard)
              
        # bot.send_message(message.chat.id, 'Твоя задача готова?',reply_markup=keyboard1)
