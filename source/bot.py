@@ -27,17 +27,17 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
     @bot.message_handler(content_types=['text'])
     def text_handler(message: telebot.types.Message):
        
-        keyboard = telebot.types.InlineKeyboardMarkup()
+        #keyboard = telebot.types.InlineKeyboardMarkup()
         
-        keyboard.add(telebot.types.InlineKeyboardButton('Опубликовать', callback_data='approve'),
-                     telebot.types.InlineKeyboardButton('Отклонить', callback_data='refuse'))
+        #keyboard.add(telebot.types.InlineKeyboardButton('Опубликовать', callback_data='approve'),
+        #             telebot.types.InlineKeyboardButton('Отклонить', callback_data='refuse'))
        
         
-       # markup = types.ReplyKeyboardMarkup()
-       # itembtnTrue = types.KeyboardButton('Готово')
-        #itembtnFalse = types.KeyboardButton('Не готово')
-        #markup = types.ReplyKeyboardRemove(selective=False)
-        #bot.send_message(chat_id, message, reply_markup=markup)
+        markup = types.ReplyKeyboardMarkup()
+        itembtnTrue = types.KeyboardButton('Готово')
+        itembtnFalse = types.KeyboardButton('Не готово')
+        markup = types.ReplyKeyboardRemove(selective=False)
+        bot.send_message(chat_id, message, reply_markup=markup)
           
         logger.info(f"It's text handler. Message from {message.from_user.id}")
 
