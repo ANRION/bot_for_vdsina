@@ -39,7 +39,7 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
         logger.info(f"It's text handler. Message from {message.from_user.id}")
         
     @bot.callback_query_handler(func=lambda call: True)
-        def callback_inline(call):
+    def callback_inline(call):
         # Если сообщение из чата с ботом
         if call.message:
             if call.data == "test":
