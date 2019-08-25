@@ -33,7 +33,7 @@ def initial_bot(use_logging=True, level_name='DEBUG'):
     def help_handler(message: telebot.types.Message):
 
        # a = os.getcwd()
-       task =  Read_Excel(".\\excel\\task_c_level.xlsm", "t_task")
+       task =  Read_Excel(".//excel//task_c_level.xlsm", "t_task")
 
        if str(message.from_user.username) == "AndreySavinov":
             s = {}
